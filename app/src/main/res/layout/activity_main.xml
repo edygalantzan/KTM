@@ -42,7 +42,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textAlignment="textEnd" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -54,5 +55,25 @@
         android:layout_alignLeft="@+id/editTextMiles"
         android:layout_alignStart="@+id/editTextMiles"
         android:id="@+id/editTextKm"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textAlignment="textEnd" />
+
+    <Button
+        android:text="Convert Miles To Km"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:id="@+id/buttonConvertMileasToKm"
+        android:layout_below="@+id/editTextKm"
+        android:layout_alignLeft="@+id/buttonConvertKmToMiles"
+        android:layout_alignStart="@+id/buttonConvertKmToMiles" />
+
+    <Button
+        android:text="Convert Km To Miles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonConvertKmToMiles"
+        android:layout_below="@+id/buttonConvertMileasToKm"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 </RelativeLayout>
