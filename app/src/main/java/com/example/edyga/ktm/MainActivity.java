@@ -1,11 +1,11 @@
 package com.example.edyga.ktm;
 
-import android.icu.text.DecimalFormat;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,11 +15,9 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import java.io.OutputStream;
-
-
 public class MainActivity extends AppCompatActivity {
 
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -47,11 +45,13 @@ public class MainActivity extends AppCompatActivity {
                 {
                     km = 0;
                 }
-                double miles = km / 0.62137;
+                double miles = ((double) ((int) ((km / 0.62137) * 1000))) / 1000;
                 System.out.print(km);
                 System.out.print(miles);
-                DecimalFormat format = new DecimalFormat("##.##");
-                editTextMiles.setText(format.format(miles));
+                editTextMiles.setText(Double.toString(miles));
+
+                //DecimalFormat format = new DecimalFormat("#.##");
+                //editTextMiles.setText(format.format(miles));
             }
         });
 
@@ -69,11 +69,14 @@ public class MainActivity extends AppCompatActivity {
                 catch (NumberFormatException e){
                     miles = 0;
                 }
-                double km = miles * 0.62137;
+                double km = ((double) ((int) ((miles * 0.62137) * 1000))) / 1000;
                 System.out.print(km);
                 System.out.print(miles);
-                DecimalFormat format = new DecimalFormat("##.##");
-                editTextKm.setText(format.format(km));
+
+                editTextKm.setText(Double.toString(km));
+
+                //DecimalFormat format = new DecimalFormat("#.##");
+                //editTextKm.setText(format.format(km));
             }
         });
 
@@ -101,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-
+        Log.v(LOG_TAG, "public void onStart()");
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
@@ -111,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-
+        Log.v(LOG_TAG, "public void onStop()");
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
