@@ -1,5 +1,6 @@
 package com.example.edyga.ktm;
 
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button convertKmToMiles = (Button) findViewById(R.id.buttonConvertKmToMiles);
+        convertKmToMiles.setBackgroundColor(Color.BLUE);
         convertKmToMiles.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -105,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         Log.v(LOG_TAG, "public void onStart()");
+        Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
@@ -115,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         Log.v(LOG_TAG, "public void onStop()");
+        Toast.makeText(this, "Bay", Toast.LENGTH_SHORT).show();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
